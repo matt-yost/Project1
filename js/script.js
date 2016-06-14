@@ -53,7 +53,7 @@ var quotesArray = [
     tags: "education"
   },
   {
-    quote: "Life is really simple, but we insist on making it complicated",
+    quote: "Life is really simple, but we insist on making it complicated.",
     source: "Confucius",
     citation: "",
     year: "",
@@ -77,8 +77,8 @@ var quotesArray = [
 
 // Create a function to get a random number? Might be more readable to just store it in a variable inside the function. UNLESS I need it globally.
 
-//I was trying to make it harder than it should have been. [i] is what needed to be random.
-//But now how am I going to make sure that it doesn't repeat?
+// I was trying to make it harder than it should have been. [i] is what needed to be random.
+// But now how am I going to make sure that it doesn't repeat?
 
 
 // Also this for loop in probably useless?. Does anyone know what they're doing?
@@ -86,12 +86,23 @@ var quotesArray = [
 //   return quotesArray[i].quote;
 // }
 
+
 var getRandomQuote = function() {
-  console.log(quotesArray[Math.floor(Math.random() * quotesArray.length)].quote);
+  return quotesArray[Math.floor(Math.random() * quotesArray.length)];
 }
 
-var printQuote = function() {
-  console.log('Print Quote');
+function printQuote() {
+  var randomQuote = getRandomQuote();
+  var html = "<p class='quote'>" + randomQuote.quote + "</p>";
+  html += "<p class='source'>" + randomQuote.source;
+  if(randomQuote.citation != ""){
+    html += "<span class='citation'>" + randomQuote.citation + "</span>";
+  }
+  if(randomQuote.year != ""){
+    html += "<span class='year'>" + randomQuote.year + "</span>";
+  }
+  html += "</p>"
+  document.getElementById("quote-box").innerHTML = html;
 }
 
-getRandomQuote()
+printQuote();
