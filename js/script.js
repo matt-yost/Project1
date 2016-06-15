@@ -1,7 +1,4 @@
-// event listener to respond to clicks on the page
-// when user clicks anywhere on the page, the "makeQuote" function is called
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
+// Array of quotes and properties as objects
 var quotesArray = [
   {
     quote: "I hated every minute of training, but I said 'Don't quit. Suffer now and live the rest of your life as a champion.",
@@ -72,21 +69,17 @@ var quotesArray = [
     citation: "",
     year: "",
     tags: "life"
+  },
+  {
+    quote: "All grown-ups were once children... but only few of them remember it.",
+    source: "Antoine de Saint-Exupéry",
+    citation: "The Little Prince",
+    year: "",
+    tags: "life"
   }
 ];
 
-// Create a function to get a random number? Might be more readable to just store it in a variable inside the function. UNLESS I need it globally.
-
-// I was trying to make it harder than it should have been. [i] is what needed to be random.
-// But now how am I going to make sure that it doesn't repeat?
-
-
-// Also this for loop in probably useless?. Does anyone know what they're doing?
-// for(var i=0; i < quotesArray.length; i++) {
-//   return quotesArray[i].quote;
-// }
-
-
+// Return a random color
 var getRandomColor = function() {
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';
@@ -96,25 +89,32 @@ var getRandomColor = function() {
     return color;
 }
 
+// Return a random Object in the quotesArray
 var getRandomQuote = function() {
   return quotesArray[Math.floor(Math.random() * quotesArray.length)];
 }
 
-function printQuote() {
+// Print quote to document
+var printQuote = function() {
   var randomBackgroundColor = getRandomColor();
   var randomQuote = getRandomQuote();
+  // Add individual elements to HTML
   var html = "<p class='quote'>" + randomQuote.quote + "</p>";
   html += "<p class='source'>" + randomQuote.source;
+  // If quote's citation is not an empty string then add it to the HTML
   if(randomQuote.citation != ""){
     html += "<span class='citation'>" + randomQuote.citation + "</span>";
   }
+  // If quote's year is not an empty string then add it to the HTML
   if(randomQuote.year != ""){
     html += "<span class='year'>" + randomQuote.year + "</span>";
   }
   html += "</p>"
   document.getElementById("quote-box").innerHTML = html;
+  // Every time loadQuote button is clicked change the background color of the body and the button
   document.getElementsByTagName("body")[0].style.backgroundColor=randomBackgroundColor;
   document.getElementById("loadQuote").style.backgroundColor=randomBackgroundColor;
 }
 
-printQuote();
+// Event listener to respond to clicks on the page
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
