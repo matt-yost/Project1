@@ -1,11 +1,18 @@
 // Array of quotes and properties as objects
 var quotesArray = [
   {
-    quote: "I hated every minute of training, but I said 'Don't quit. Suffer now and live the rest of your life as a champion.",
+    quote: "I hated every minute of training, but I said 'Don't quit. Suffer now and live the rest of your life as a champion.'",
     source: "Muhammad Ali",
     citation: "",
     year: "",
     tags: "inspirational"
+  },
+  {
+    quote: "Knowledge, like air, is vital to life. Like air, no one should be denied it.",
+    source:"Alan Moore",
+    citation: "V for Vendetta",
+    year:"",
+    tags:"education"
   },
   {
     quote: "The best and most beautiful things in the world cannot be seen or even touched. They must be felt with the heart.",
@@ -79,6 +86,8 @@ var quotesArray = [
   }
 ];
 
+var usedQuotes = [];
+
 // Return a random color
 var getRandomColor = function() {
     var letters = '0123456789ABCDEF'.split('');
@@ -114,6 +123,19 @@ var printQuote = function() {
   // Every time loadQuote button is clicked change the background color of the body and the button
   document.getElementsByTagName("body")[0].style.backgroundColor=randomBackgroundColor;
   document.getElementById("loadQuote").style.backgroundColor=randomBackgroundColor;
+
+  // There is probably a better way of doing this... But it works
+  // Stores index value of quote selected from quotesArray
+  var index = quotesArray.indexOf(randomQuote);
+  // Removes selected quote
+  quotesArray.splice(index,1);
+  // Pushes quote into usedQuotes array
+  usedQuotes.push(randomQuote);
+  // If the quotes array is empty, reload it with the used quotes and set used quotes back to empty
+  if(quotesArray.length === 0){
+    quotesArray = usedQuotes;
+    usedQuotes = [];
+  }
 }
 
 // Event listener to respond to clicks on the page
