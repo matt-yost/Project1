@@ -87,11 +87,21 @@ var quotesArray = [
 // }
 
 
+var getRandomColor = function() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 var getRandomQuote = function() {
   return quotesArray[Math.floor(Math.random() * quotesArray.length)];
 }
 
 function printQuote() {
+  var randomBackgroundColor = getRandomColor();
   var randomQuote = getRandomQuote();
   var html = "<p class='quote'>" + randomQuote.quote + "</p>";
   html += "<p class='source'>" + randomQuote.source;
@@ -103,6 +113,8 @@ function printQuote() {
   }
   html += "</p>"
   document.getElementById("quote-box").innerHTML = html;
+  document.getElementsByTagName("body")[0].style.backgroundColor=randomBackgroundColor;
+  document.getElementById("loadQuote").style.backgroundColor=randomBackgroundColor;
 }
 
 printQuote();
