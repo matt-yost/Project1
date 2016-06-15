@@ -127,7 +127,7 @@ var printQuote = function() {
   // There is probably a better way of doing this... But it works
   // Stores index value of quote selected from quotesArray
   var index = quotesArray.indexOf(randomQuote);
-  // Removes selected quote
+  // Removes selected quote from quotesArray
   quotesArray.splice(index,1);
   // Pushes quote into usedQuotes array
   usedQuotes.push(randomQuote);
