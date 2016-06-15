@@ -118,3 +118,6 @@ var printQuote = function() {
 
 // Event listener to respond to clicks on the page
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+
+// Change quote and background color every 10 seconds
+var interval = window.setInterval(printQuote, 10000);
