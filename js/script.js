@@ -91,22 +91,21 @@ var printQuote = function() {
   // Add individual elements to HTML
   var html = "<p class='quote'>" + randomQuote.quote + "</p>";
   html += "<p class='source'>" + randomQuote.source;
-  // If quote's citation is not an empty string then add it to the HTML
+  // If quote's citation is not undefined then add it to the HTML
   if(randomQuote.citation != undefined){
     html += "<span class='citation'>" + randomQuote.citation + "</span>";
   }
-  // If quote's year is not an empty string then add it to the HTML
+  // If quote's year is not undefined then add it to the HTML
   if(randomQuote.year != undefined){
     html += "<span class='year'>" + randomQuote.year + "</span>";
   }
   html += "</p>"
-
   document.getElementById("quote-box").innerHTML = html;
+
   // Every time loadQuote button is clicked change the background color of the body and the button
   document.getElementsByTagName("body")[0].style.backgroundColor=randomBackgroundColor;
   document.getElementById("loadQuote").style.backgroundColor=randomBackgroundColor;
 
-  // There is probably a better way of doing this... But it works and I can only bang my head against the wall so many times.
   // Store index value of quote selected from quotesArray
   var index = quotesArray.indexOf(randomQuote);
   // Remove selected quote from quotesArray
@@ -123,5 +122,5 @@ var printQuote = function() {
 // Event listener to respond to clicks on the page
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-// Change quote and background color every 10 seconds
-var interval = window.setInterval(printQuote, 10000);
+// Change quote and background color every 20 seconds
+var interval = window.setInterval(printQuote, 20000);

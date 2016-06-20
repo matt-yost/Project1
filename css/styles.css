@@ -89,6 +89,10 @@ body {
     font-size: 1rem;
   }
   #loadQuote {
-    bottom: 10px;
+    bottom: 10%;
+  }
+
+  #quote-box {
+    top:10%;
   }
 }
