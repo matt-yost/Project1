@@ -75,12 +75,12 @@ var getRandomColor = function() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-}
+};
 
 // Return a random Object in the quotesArray
 var getRandomQuote = function() {
   return quotesArray[Math.floor(Math.random() * quotesArray.length)];
-}
+};
 
 
 // Print quote to document
@@ -92,14 +92,14 @@ var printQuote = function() {
   var html = "<p class='quote'>" + randomQuote.quote + "</p>";
   html += "<p class='source'>" + randomQuote.source;
   // If quote's citation is not undefined then add it to the HTML
-  if(randomQuote.citation != undefined){
+  if(randomQuote.citation !== undefined){
     html += "<span class='citation'>" + randomQuote.citation + "</span>";
   }
   // If quote's year is not undefined then add it to the HTML
-  if(randomQuote.year != undefined){
+  if(randomQuote.year !== undefined){
     html += "<span class='year'>" + randomQuote.year + "</span>";
   }
-  html += "</p>"
+  html += "</p>";
   document.getElementById("quote-box").innerHTML = html;
 
   // Every time loadQuote button is clicked change the background color of the body and the button
@@ -117,7 +117,7 @@ var printQuote = function() {
     quotesArray = usedQuotes;
     usedQuotes = [];
   }
-}
+};
 
 // Event listener to respond to clicks on the page
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
